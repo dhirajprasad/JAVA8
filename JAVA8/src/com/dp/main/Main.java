@@ -1,5 +1,6 @@
 package com.dp.main;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +20,9 @@ interface Sayable{
     default void dontSay(){
     	System.out.println("dont say any thing ");
     }
+    default void sayLoud(){
+    	System.out.println("dont say any thing ");
+    }
 }  
 class MethodReference {  
     static void saySomething(String s ){  
@@ -32,8 +36,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		HashMap<String, String> hashmap = new HashMap<>();
 		Sayable sa = MethodReference::saySomething;
 		sa.dontSay();
+		sa.sayLoud();
 		LambdaEx.lmbda();
 		String name = "dhiraj";
 		Stream<String> language =  Stream.of("tamil","telgu","hindi",null,"kannada");
@@ -58,6 +64,7 @@ public class Main {
 		System.out.println(">>>>name <<<<"+obj);
 		Stream<Object> s =Stream.builder().add("dhiraj prasd").build();
 		Chapter.lessonOne();
+		Chapter.lessonTwo();
 	}
 
 }

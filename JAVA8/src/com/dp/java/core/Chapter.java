@@ -1,8 +1,8 @@
 package com.dp.java.core;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,7 +21,9 @@ public class Chapter {
 
 	}
 	public static void lessonTwo(){
-		
+		List<Integer> intList = Arrays.asList(1,2,3,4,8);
+		List<Integer> list = intList.stream().map(element -> element * 2 ).collect(Collectors.toList());
+		list.stream().forEach(System.out::println);
 	}
 
 }
