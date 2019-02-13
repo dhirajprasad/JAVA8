@@ -14,19 +14,19 @@ import com.dp.java.lambda.LambdaEx;
  * @author dhiraj
  */
 
-
+@FunctionalInterface
 interface Sayable{  
     void say(String s);  
     default void dontSay(){
-    	System.out.println("dont say any thing ");
+    	System.out.println("<<<dont say any thing>> ");
     }
     default void sayLoud(){
-    	System.out.println("dont say any thing ");
+    	System.out.println("<<<dont say any thing >>");
     }
 }  
 class MethodReference {  
     static void saySomething(String s ){  
-       System.out.println("Hello, this is static method."+ s);  
+       System.out.println("Hello, exotic."+ s);  
    }
     void met(Mathsq m){
     	m.add();
@@ -38,7 +38,9 @@ public class Main {
 
 		HashMap<String, String> hashmap = new HashMap<>();
 		Sayable sa = MethodReference::saySomething;
+		System.out.println("calling dont say ");
 		sa.dontSay();
+		System.out.println("calling  say loud");
 		sa.sayLoud();
 		LambdaEx.lmbda();
 		String name = "dhiraj";

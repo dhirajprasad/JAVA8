@@ -1,6 +1,7 @@
 package com.dp.java.core;
 
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class Comp implements Comparator<Student> {
 
@@ -10,6 +11,11 @@ public class Comp implements Comparator<Student> {
 		return compare;
 	}
 
+}
+class Test {
+	HashMap<String, String> map = new HashMap<>();
+	void test(){
+		System.identityHashCode(new Test());
+	}
 	
-
 }
