@@ -71,5 +71,32 @@ public class ArrayOperationImpl implements ArrayOperation {
 			  }
 			  System.out.println(Arrays.toString(arr));
 			 }
+
+	@Override
+	public void removeDuplicate(int[] arr) {
+		int len = arr.length;
+		int[] temp = new int[len]; 
+		if(len==0||len == 1){
+			System.out.println("final array >>"+arr);
+		}
+		int j=0;
+		for(int i=0;i<len-1;i++){
+			if(arr[i]!=arr[i+1]){
+				temp[j]=arr[i];
+				j++;
+			}
+		}
+		 temp[j++] = arr[len-1]; 
+		for (int i=0; i<j; i++) 
+            arr[i] = temp[i]; 
+		for (int i : arr) {
+			System.out.print(" "+i);
+		}
+		System.out.println();
+		for (int i : temp) {
+			System.out.print(" "+i);
+		}
+		
+	}
 	}
 

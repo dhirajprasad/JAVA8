@@ -5,4 +5,5 @@ public interface ArrayOperation {
 	void mvZeroFront(int[] arr);
 	void seprateZeroAndOne(int[] arr);
 	void seprateEvenAndOdd(int[] arr);
+	void removeDuplicate(int[] arr);
 }

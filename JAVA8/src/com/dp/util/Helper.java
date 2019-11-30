@@ -8,9 +8,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -68,7 +70,7 @@ public class Helper {
 	 * @return
 	 */
 	public static int finMin(int[] arr){
-		int min=arr[0];
+		int min =arr[0];
 		for(int i=1;i<arr.length;i++){
 			if(arr[i]<min){
 				min = arr[i];
@@ -87,14 +89,14 @@ public class Helper {
 		int mid = (first + last)/2;
 		while(first <= last){
 			if(mid == key ){
-				System.out.println(key);
+				System.out.println("found :"+key);
 				break;
 			}
 			if(key<mid){
-				last = last-1;
+				last = mid-1;
 			}
 			if(key > mid){
-				first = first +1;
+				first = mid +1;
 			}
 			mid = (first + last)/2;
 		}
@@ -162,6 +164,9 @@ public class Helper {
 			e.printStackTrace();
 		}
 	}
-	
+	public static <E> Set<E> listToSet(List<E> list){
+		Set<E> set = new HashSet<>(list);
+		return  set;
+	}
 
 }
