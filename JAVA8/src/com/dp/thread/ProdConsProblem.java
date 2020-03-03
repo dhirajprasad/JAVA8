@@ -1,5 +1,7 @@
 package com.dp.thread;
 
+import java.util.TreeMap;
+
 public class ProdConsProblem {
 
 	public static void main(String[] args) {
@@ -8,6 +10,7 @@ public class ProdConsProblem {
 		Thread tc = new Thread(new Consumer(resource));
 		tc.start();
 		tp.start();
+		TreeMap<String, Integer> i ;
 
 	}
 
@@ -24,8 +27,10 @@ class Consumer implements Runnable{
 	@Override
 	public void run() {
 		System.out.println("consumer is running ");
-		String item =resource.consume();
-		System.out.println("consumed "+item);
+		for(int i=1;i<3;i++){
+			String item =resource.consume();
+			System.out.println("consumed "+item);
+		}
 	}
 	
 }
@@ -45,6 +50,11 @@ class Producer implements Runnable{
 		for (int i = 1; i < 3; i++) {
 			resource.produce(""+i);
 			System.out.println("produced :" + i);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -76,7 +86,6 @@ class ResourceFactory{
 			try {
 				wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

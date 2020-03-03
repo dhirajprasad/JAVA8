@@ -11,7 +11,9 @@ public class ExecutorFramework {
 
 		Thread WorkerA = new Thread(new Task());
 		ExecutorService executorService = Executors.newSingleThreadExecutor();
+		@SuppressWarnings("rawtypes")
 		Future f = executorService.submit(WorkerA);
+		System.out.println("submitted the task");
 		try {
 			Object o= f.get();
 			System.out.println(o);
@@ -26,8 +28,8 @@ class Task implements Runnable{
 
 	@Override
 	public void run() {
-		int i = Integer.MIN_VALUE;
-		while (i<Integer.MAX_VALUE){
+		int i = 0;//Integer.MIN_VALUE/6000;
+		while (i<9){
 			i++;
 			System.out.println(i);
 		}

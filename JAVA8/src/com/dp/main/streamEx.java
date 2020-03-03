@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @FunctionalInterface
-interface fun{
+interface Fun{
 	void fun();
 }
 class Mycomparator implements Comparator<String>{
@@ -34,7 +34,7 @@ public class streamEx {
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
-		fun f= ()->System.out.println("dhiraj prasad");
+		Fun f= ()->System.out.println("dhiraj prasad");
 		List<String> list = Arrays.asList("sdfe","nirah","nirah","dhiraj","india");
 		list.stream().distinct().forEach(System.out::println);
 		list.stream().filter(var->{
