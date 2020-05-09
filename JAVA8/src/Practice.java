@@ -1,10 +1,5 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Practice {
 	/*
@@ -30,15 +25,23 @@ public class Practice {
 		map.put("france", 3);
 		map.put("japan", 11);
 		map.put("italy", 8);
-		Iterator<String> iterator = map.keySet().iterator();
-		while (iterator.hasNext()) {
-			String country = iterator.next();
-			if(map.get(country)<=3) {
-				System.out.printf("removing %s gdp ",country);
-				iterator.remove();
-			}
-		}
+		/*
+		 * Iterator<String> iterator = map.keySet().iterator(); while
+		 * (iterator.hasNext()) { String country = iterator.next();
+		 * if(map.get(country)<=3) { System.out.printf("removing %s gdp ",country);
+		 * iterator.remove(); } }
+		 */
 		
+		/*
+		 * Map<String, Integer> m =
+		 * map.entrySet().stream().filter(entry->entry.getValue()<=3)
+		 * .collect(Collectors.toMap(en->en.getKey(), en->en.getValue()));
+		 * 
+		 * System.out.println(m);
+		 */
+		map.entrySet().removeIf(en->en.getKey().equals("india"));
+		
+		System.out.println(map);
 
 	}
 
