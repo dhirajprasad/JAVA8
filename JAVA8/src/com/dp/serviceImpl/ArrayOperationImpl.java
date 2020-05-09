@@ -86,7 +86,7 @@ public class ArrayOperationImpl implements ArrayOperation {
 				j++;
 			}
 		}
-		 temp[j++] = arr[len-1]; 
+		temp[j++] = arr[len-1]; 
 		for (int i=0; i<j; i++) 
             arr[i] = temp[i]; 
 		for (int i : arr) {

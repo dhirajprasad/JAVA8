@@ -24,14 +24,15 @@ import com.dp.java.lambda.LambdaEx;
 
 public class Helper {
 
-	static void helper(){
+	static void helper() {
 		HashMap<String, String> hashmap = new HashMap<>();
 		System.out.println("calling  say loud");
 		LambdaEx.lmbda();
 		String name = "dhiraj";
-		Stream<String> language =  Stream.of("tamil","telgu","hindi",null,"kannada");
-		//List<String> list =	language.filter(item->item!=null).collect(Collectors.toList());
-	//	list.forEach(System.out::println);
+		Stream<String> language = Stream.of("tamil", "telgu", "hindi", null, "kannada");
+		// List<String> list =
+		// language.filter(item->item!=null).collect(Collectors.toList());
+		// list.forEach(System.out::println);
 		List<String> result = language.filter(Objects::nonNull).collect(Collectors.toList());
 		result.forEach(System.out::println);
 		Stream<String> na = Stream.of(name).filter(Objects::nonNull);
@@ -41,71 +42,77 @@ public class Helper {
 		Stream<Object> stream = Stream.of("dhiraj");
 		System.out.println();
 		String name1 = "dhiraj";
-		String obj = Objects.requireNonNull(name1,"cant be null");
-		System.out.println(">>>>name <<<<"+obj);
-		Stream<Object> s =Stream.builder().add("dhiraj prasd").build();
+		String obj = Objects.requireNonNull(name1, "cant be null");
+		System.out.println(">>>>name <<<<" + obj);
+		Stream<Object> s = Stream.builder().add("dhiraj prasd").build();
 		Chapter.lessonOne();
 		Chapter.lessonTwo();
 	}
-	static <T> void swapNumber(T a ,T b){
-		
+
+	static <T> void swapNumber(T a, T b) {
+
 	}
+
 	/**
-	 * method for finding maximum number from array 
+	 * method for finding maximum number from array
+	 * 
 	 * @param arr
 	 * @return
 	 */
-	public static int findMax(int[] arr){
+	public static int findMax(int[] arr) {
 		int max = arr[0];
-		for (int i=1;i<arr.length;i++){
-			if(arr[i]>max){
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] > max) {
 				max = arr[i];
 			}
 		}
 		return max;
 	}
+
 	/**
 	 * method for finding minimum number from array of type int
+	 * 
 	 * @param arr
 	 * @return
 	 */
-	public static int finMin(int[] arr){
-		int min =arr[0];
-		for(int i=1;i<arr.length;i++){
-			if(arr[i]<min){
+	public static int finMin(int[] arr) {
+		int min = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] < min) {
 				min = arr[i];
 			}
 		}
 		return min;
 	}
+
 	/**
 	 * @param arr
 	 * @param key
-	 * binary search 
+	 *            binary search
 	 */
-	public static void  bnarySearch(int[] arr,int key){
+	public static void bnarySearch(int[] arr, int key) {
 		int first = 0;
 		int last = arr.length - 1;
-		int mid = (first + last)/2;
-		while(first <= last){
-			if(mid == key ){
-				System.out.println("found :"+key);
+		int mid = (first + last) / 2;
+		while (first <= last) {
+			if (mid == key) {
+				System.out.println("found :" + key);
 				break;
 			}
-			if(key<mid){
-				last = mid-1;
+			if (key < mid) {
+				last = mid - 1;
 			}
-			if(key > mid){
-				first = mid +1;
+			if (key > mid) {
+				first = mid + 1;
 			}
-			mid = (first + last)/2;
+			mid = (first + last) / 2;
 		}
-		
+
 	}
 
-	public  static void write(byte[] stream ){
-		String pa= new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
-		String path =pa+"\\temp.pdf";
+	public static void write(byte[] stream) {
+		String pa = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
+		String path = pa + "\\temp.pdf";
 		File file = new File(path);
 		FileOutputStream out = null;
 		try {
@@ -116,9 +123,8 @@ public class Helper {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally {
-			if(out!=null){
+		} finally {
+			if (out != null) {
 				try {
 					out.close();
 				} catch (IOException e) {
@@ -126,37 +132,37 @@ public class Helper {
 				}
 			}
 		}
-		
+
 	}
 
-	public static void serializ(Object object){
-		String pa= new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
-		String path  =pa+"\\temp.ser";
+	public static void serializ(Object object) {
+		String pa = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
+		String path = pa + "\\temp.ser";
 		File file = new File(path);
-		try(FileOutputStream fileout = new FileOutputStream(file);
-			ObjectOutputStream out = new ObjectOutputStream(fileout);){
-			out.writeObject(object); 
-            System.out.println("Object has been serialized"); 
-			
-			
+		try (FileOutputStream fileout = new FileOutputStream(file);
+				ObjectOutputStream out = new ObjectOutputStream(fileout);) {
+			out.writeObject(object);
+			System.out.println("Object has been serialized");
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-				
+
 	}
-	public static void deserializ(){
-		String docPath= new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
-		String path  =docPath+"\\temp.ser";
+
+	public static void deserializ() {
+		String docPath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
+		String path = docPath + "\\temp.ser";
 		File file = new File(path);
 		try (FileInputStream inputStream = new FileInputStream(file);
-			ObjectInputStream objstream = new ObjectInputStream(inputStream)){
-			Student  obj = (Student) objstream.readObject();
-			String name =obj.getName();
+				ObjectInputStream objstream = new ObjectInputStream(inputStream)) {
+			Student obj = (Student) objstream.readObject();
+			String name = obj.getName();
 			int roll = obj.getRoll();
-			System.out.println("name "+name +" roll>"+roll);
-			
+			System.out.println("name " + name + " roll>" + roll);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -164,9 +170,38 @@ public class Helper {
 			e.printStackTrace();
 		}
 	}
-	public static <E> Set<E> listToSet(List<E> list){
+
+	public static <E> Set<E> listToSet(List<E> list) {
 		Set<E> set = new HashSet<>(list);
-		return  set;
+		return set;
+	}
+
+	public static void findSubarray(int[] A, int sum) {
+		// maintains sum of current window
+		int windowSum = 0;
+
+		// maintain a window [low, high-1]
+		int low = 0, high = 0;
+
+		// consider every sub-array starting from low index
+		for (low = 0; low < A.length; low++) {
+			// if current window's sum is less than the given sum,
+			// then add elements to current window from right
+			while (windowSum < sum && high < A.length) {
+				windowSum += A[high];
+				high++;
+			}
+
+			// if current window's sum is equal to the given sum
+			if (windowSum == sum) {
+				System.out.printf("Subarray found [%d-%d]\n", low, high - 1);
+				return;
+			}
+
+			// At this point the current window's sum is more than the given
+			// sum remove current element (leftmost element) from the window
+			windowSum -= A[low];
+		}
 	}
 
 }
