@@ -24,6 +24,7 @@ public class Chapter {
 		List<Integer> intList = Arrays.asList(1,2,3,4,8);
 		List<Integer> list = intList.stream().map(element -> element * 2 ).collect(Collectors.toList());
 		list.stream().forEach(System.out::println);
+		
 	}
 
 }
