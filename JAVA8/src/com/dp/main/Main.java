@@ -46,6 +46,19 @@ public class Main {
 	        for (int i=0; i<len; i++) 
 	            System.out.print(arr[i]+" ");
 	        
+	        String str = "india";
+	        String s = new String("india");
+	        System.out.println(str.hashCode()+"str");
+	        System.out.println(s.hashCode()+"s");
+	        System.out.println(s==str);
+	        StringBuilder s1 = new StringBuilder("a");
+	        StringBuilder s2 = new StringBuilder("a");
+	        System.out.println(s1.equals(s2)); 
+
+	        System.out.println(s1.hashCode() == s2.hashCode());
+	        System.out.println(s1.hashCode());
+	        System.out.println(s2.hashCode());
+	        
 	   
 
 	}
