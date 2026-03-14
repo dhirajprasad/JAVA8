@@ -3,12 +3,17 @@ package com.dp.main;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @FunctionalInterface
 interface Fun{
 	void fun();
+	default void m(){
+		System.out.println("default >>> m");
+	}
 }
 class Mycomparator implements Comparator<String>{
 
@@ -34,7 +39,18 @@ public class streamEx {
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
+		Runnable work = ()->{
+			System.out.println("run method inside runnable ");
+		};
+		
+		Thread t = new Thread() {
+			public void run() {
+				System.out.println("thread");
+			}
+		};
+		t.start();
 		Fun f= ()->System.out.println("dhiraj prasad");
+		Fun ff=()->{};
 		List<String> list = Arrays.asList("sdfe","nirah","nirah","dhiraj","india");
 		list.stream().distinct().forEach(System.out::println);
 		list.stream().filter(var->{
@@ -44,9 +60,9 @@ public class streamEx {
 				return false;
 			}).collect(Collectors.toList());
 		
-		System.out.print("====================================================");
+		System.out.println("====================================================");
 		list.stream().skip(0).forEach(System.out::println);
-		System.out.print("==========================================================");
+		System.out.println("==========================================================");
 		List l =list.stream().map(var->var.equals("dhiraj")).collect(Collectors.toList());
 		System.out.println(l);
 		@SuppressWarnings("rawtypes")
