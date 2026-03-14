@@ -1,7 +1,5 @@
 package com.dp.thread;
 
-import java.util.TreeMap;
-
 public class ProdConsProblem {
 
 	public static void main(String[] args) {
@@ -10,7 +8,7 @@ public class ProdConsProblem {
 		Thread tc = new Thread(new Consumer(resource));
 		tc.start();
 		tp.start();
-		TreeMap<String, Integer> i ;
+		
 
 	}
 
@@ -27,7 +25,7 @@ class Consumer implements Runnable{
 	@Override
 	public void run() {
 		System.out.println("consumer is running ");
-		for(int i=1;i<3;i++){
+		for(int i=1;i<4;i++){
 			String item =resource.consume();
 			System.out.println("consumed "+item);
 		}
@@ -47,7 +45,7 @@ class Producer implements Runnable{
 	@Override
 	public void run() {
 		System.out.println("producer is running ");
-		for (int i = 1; i < 3; i++) {
+		for (int i = 1; i < 4; i++) {
 			resource.produce(""+i);
 			System.out.println("produced :" + i);
 			try {
