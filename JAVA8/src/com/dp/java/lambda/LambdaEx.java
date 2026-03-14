@@ -40,7 +40,7 @@ public class LambdaEx {
 
 	public static void lmbda(){
 		List<Student> list=new ArrayList<>();
-		list.add(new Student("Dhiraj", 4));
+		list.add(new Student("Dhiraj", 5));
 		list.add(new Student("Ajay", 450));
 		list.add(new Student("Niraj", 1));
 		list.add(new Student("w", 341));
@@ -60,7 +60,7 @@ public class LambdaEx {
 		 * in java 8 using lambda expression this is how we sort list
 		 */
 		Comparator<Student> c=(Student s1,Student s2)->{
-			return s2.getRoll() -s1.getRoll();
+			return s2.getRoll() -s1.getRoll();//
 			
 		};
 		
@@ -70,7 +70,7 @@ public class LambdaEx {
 		 */
 		Comparator<Student> comparator=( s1, s2)->s2.getRoll() -s1.getRoll();
 		/*
-		 * without type declaration 
+		 * without type declaration  
 		 */
 		Collections.sort(list, ( s1, s2)->{
 			return s1.getRoll() - s2.getRoll();
