@@ -6,15 +6,16 @@ public class JoinExample {
 
 		Thread t1 = new Thread(()->{
 			try {
+				System.out.println("Ti thread is starting");
 				Thread.sleep(1000);
 				for(int i=0;i<10;i++){
 					
-					System.out.println(i);
+					System.out.println(Thread.currentThread().getName() +"   "+i);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println(Thread.currentThread());
+			System.out.println(Thread.currentThread()+" finished the job");
 		},"T1");
 		
 		Thread t2 = new Thread(()->{
