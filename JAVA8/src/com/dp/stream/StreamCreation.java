@@ -71,6 +71,7 @@ public class StreamCreation {
 	    List<Integer> d = Arrays.asList(1, 2, 3, 4, 2, 5, 1);
 	    d.stream().collect(Collectors.groupingBy(i->i,Collectors.counting())).entrySet().stream()
 	    .filter(e->e.getValue()>1).map(e->e.getKey()).collect(Collectors.toList()).forEach(System.out::println);
+	    
 	    Set<Integer> set = new HashSet<>();
 	    d.stream().filter(i->!set.add(i)).collect(Collectors.toSet()).forEach(System.out::println);
 	    //Reverse Each String in a List
@@ -84,7 +85,7 @@ public class StreamCreation {
 	    .stream().max(Map.Entry.comparingByValue()).get();
 	    System.out.println(cz);
 	    largesetNumber();
-	    int[] arr = {1,23,9,62,4,5,6,12};
+	    int[] arr = {1,23,9,62,4,4,6,12};
 	    reverse(arr);
 	    int[] copy = reversedCopy(arr);
 	    for(int i=0;i<copy.length;i++){
@@ -92,6 +93,11 @@ public class StreamCreation {
 		}
 	    LargestConsecutiveSubarray();
 	    LISWithSequence();
+	    Arrays.sort(arr);
+	    int n = removeDuplicates(arr,8);
+	    for(int i=0;i<n;i++)System.out.println(arr[i]);
+	    findLargestSubarray(Arrays.asList(2, 1, 4, 3, 1, 2));
+	    System.out.println(n+"duplicate");
 	}
 	
 	static void largesetNumber(){
@@ -111,7 +117,24 @@ public class StreamCreation {
         
         return out;
     }
+    static int removeDuplicates(int arr[], int n) {
+		if (n == 0 || n == 1)
+			return n;
 
+		// To store index of next unique element
+		int j = 0;
+		//1 3 4 4 5 6 
+		// Doing same as done in Method 1
+		// Just maintaining another updated index i.e. j
+		//this will work for sorted array
+		for (int i = 0; i < n - 1; i++)
+			if (arr[i] != arr[i + 1])
+				arr[j++] = arr[i];
+ 
+		arr[j++] = arr[n - 1];
+		System.out.println(Arrays.toString(arr));
+		return j;
+	}
 	static void reverse(int[] arr){
 		// int[] arr = {1,23,9,62,4,5,6,12};
 		int n = arr.length;
@@ -136,8 +159,9 @@ public class StreamCreation {
 		
 	}	     
 	static void LargestConsecutiveSubarray () {
-        int[] arr = {1, 56, 57, 58, 2,5, 3, 4};
-        int n = arr.length;
+        //int[] arr = {1, 56, 57, 58, 2,5, 3, 4};
+        int[] arr = {2, 1, 4, 3, 1, 2};
+		int n = arr.length;
         int maxLen = 0;
         int startIndex = 0;
 
@@ -177,7 +201,7 @@ public class StreamCreation {
 	        List<Integer> bestSequence = new ArrayList<>();
 
 	        for (int num : set) {
-	            if (!set.contains(num - 1)) { // start of sequence
+	            if (!set.contains(num - 1)) {  // start of sequence
 	                int current = num;
 	                List<Integer> tempSeq = new ArrayList<>();
 	                tempSeq.add(current);
@@ -258,4 +282,42 @@ public class StreamCreation {
         System.out.println("Sequence: " + sequence);
 		 
 	 }
+	
+	public static List<Integer> findLargestSubarray(List<Integer> nums) {
+		// Write your code here...
+		 if (nums == null || nums.isEmpty()) return new ArrayList<>();
+		System.out.println(nums);
+		int len = 1;
+		int start = 0;
+		List list = new ArrayList();
+		
+
+		for (int i = 0; i < nums.size(); i++) {
+			int min = nums.get(i);int max = nums.get(i);
+			Set<Integer> set = new HashSet<>();
+			set.add(nums.get(i));
+			for (int j = i + 1; j < nums.size(); j++) {
+				if (set.contains(nums.get(j))) break;
+				set.add(nums.get(j));
+
+				min = Math.min(min, nums.get(j));
+				max = Math.max(max, nums.get(j));
+				if (max - min + 1 == j - i + 1) {
+					if (j - i + 1 > len){
+						len = j - i + 1;
+						start = i;
+					}
+					
+
+				}
+			}
+		}
+		System.out.print("K:"+start +" k<"+(start + len));
+		for (int k = start; k < start + len; k++) {
+			list.add(nums.get(k));
+
+		}
+		System.out.println(list);
+		return list;
+	}
 }
